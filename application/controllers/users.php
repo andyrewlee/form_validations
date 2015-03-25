@@ -7,15 +7,9 @@ class Users extends CI_Controller {
 
   public function create() {
     $this->load->model('User');
+    $result = $this->User->validate($this->input->post());
 
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
-    $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
-    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|matches[password_confirmation]');
-    $this->form_validation->set_rules('password_confirmation', 'Password Confirmation', 'trim|required');
-
-    if($this->form_validation->run()) {
+    if($result == "valid") {
       $id = $this->User->create($this->input->post());
       $success[] = 'Welcome! Registration was successful!';
       $this->session->set_flashdata('success', $success);
