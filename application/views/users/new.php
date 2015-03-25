@@ -9,28 +9,31 @@
     <link href="/assets/stylesheets/style.css" rel="stylesheet">
   </head>
   <body>
+<?php
+    $this->load->view('partials/flash_messages.php');
+?>
     <h1>Registration</h1>
     <form action="/users/create" method="post">
       <p>
         <label for="first_name">First Name:</label>
-        <input id="first_name" name="user[first_name]" type="text">
+        <input id="first_name" name="first_name" type="text">
       </p>
       <p>
         <label for="last_name">Last Name:</label>
-        <input id="last_name" name="user[last_name]" type="text">
+        <input id="last_name" name="last_name" type="text">
       </p>
       <p>
         <label for="email">Email:</label>
-        <input id="email" name="user[email]" type="email">
+        <input id="email" name="email" type="email">
       </p>
       <p>
         <label for="password">Password:</label>
-        <input id="password" name="user[password]" type="password">
+        <input id="password" name="password" type="password">
       </p>
       <p>
         <label for="password_confirmation">Password Confirmation:</label>
         <input id="password_confirmation"
-               name="user[password_confirmation]"
+               name="password_confirmation"
                type="password">
       </p>
       <input type="submit" value="Register">
