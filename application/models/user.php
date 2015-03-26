@@ -6,7 +6,8 @@ class User extends CI_Model {
               VALUES (?,?,?,?,?,?)";
     $values = array($post['first_name'], $post['last_name'], $post['email'],
                     md5($post['password']), date("Y-m-d, H:i:s"), date("Y-m-d, H:i:s"));
-    return $this->db->query($query, $values);
+    $id = $this->db->insert_id($this->db->query($query, $values));
+    return $id;
   }
 
   public function find($id) {
